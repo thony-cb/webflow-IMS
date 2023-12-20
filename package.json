@@ -1,0 +1,16 @@
+{
+  "name": "webflow-code",
+  "version": "1.0.0",
+  "description": "Webflow code for IMS website",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "esbuild script.js --bundle --outfile=dist/index.js --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.19.10",
+    "serve": "^14.2.1"
+  }
+}
