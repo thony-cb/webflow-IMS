@@ -1,8 +1,9 @@
 var Webflow = Webflow || [];
 Webflow.push(function () {
   // Fix for Safari
+
   if (navigator.userAgent.includes("Safari")) {
-    document.querySelectorAll(".tab-button").forEach(
+    $("[vtab-element='tab']").forEach(
       (t) =>
         (t.focus = function () {
           const x = window.scrollX,
@@ -25,18 +26,18 @@ Webflow.push(function () {
   // Connect your class names to elements.
   function tabLoop() {
     tabTimeout = setTimeout(function () {
-      var $next = $(".tabs-menu").children(".w--current:first").next();
-
+      var $next = $("[vtab-menu='menu']").children(".w--current:first").next();
+      console.log($next);
       if ($next.length) {
         $next.click(); // user click resets timeout
       } else {
-        $(".tab-button:first").click();
+        $("[vtab-element='tab']:first").click();
       }
     }, 5000); // 5 Second Rotation
   }
 
   // Reset Loops
-  $(".tab-button").click(function () {
+  $("[vtab-element='tab']").click(function () {
     clearTimeout(tabTimeout);
     tabLoop();
   });
