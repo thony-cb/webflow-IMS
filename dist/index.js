@@ -3,7 +3,7 @@
   var Webflow = Webflow || [];
   Webflow.push(function() {
     if (navigator.userAgent.includes("Safari")) {
-      $("[vtab-element='tab']").forEach(
+      document.querySelectorAll('[vertical-tab-element="tab"]').forEach(
         (t) => t.focus = function() {
           const x = window.scrollX, y = window.scrollY;
           const f = () => {
@@ -20,16 +20,16 @@
     tabLoop();
     function tabLoop() {
       tabTimeout = setTimeout(function() {
-        var $next = $("[vtab-menu='menu']").children(".w--current:first").next();
+        var $next = $("[vertical-tab-element='menu']").children(".w--current:first").next();
         console.log($next);
         if ($next.length) {
           $next.click();
         } else {
-          $("[vtab-element='tab']:first").click();
+          $("[vertical-tab-element='tab']:first").click();
         }
       }, 5e3);
     }
-    $("[vtab-element='tab']").click(function() {
+    $("[vertical-tab-element='tab']").click(function() {
       clearTimeout(tabTimeout);
       tabLoop();
     });
